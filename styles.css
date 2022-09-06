@@ -1,20 +1,16 @@
 body {
-  background-color: steelblue;
-  color: white;
+  background-color: #ffecd1;
+  color: black;
   margin: 0;
   padding: 0;
 }
 
 .header {
   height: 12vh;
-  background-color: paleturquoise;
+  background-color: #ffecd1;
   font-family: "Oswald", sans-serif;
-  color: steelblue;
-  text-shadow: 0 0 4px white; /* horizontal-offset vertical-offset 'blur' colour */
-  -moz-text-shadow: 0 0 4px white;
-  -webkit-text-shadow: 0 0 4px white;
+  color: #15616d;
   font-size: x-large;
-  border: 1px solid white;
   margin: 0;
   padding: 0;
   text-align: center;
@@ -35,7 +31,7 @@ body {
 .board {
   height: 70vh;
   width: 70vh;
-  background-color: paleturquoise;
+  background-color: #15616d;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 1rem;
@@ -44,14 +40,12 @@ body {
 }
 
 .spaces {
-  background-color: steelblue;
+  background-color: #ffecd1;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: "Oswald", sans-serif;
   font-size: 5rem;
-  color: palevioletred;
-  text-shadow: 0 0 4px white; /* horizontal-offset vertical-offset 'blur' colour */
-  -moz-text-shadow: 0 0 4px white;
-  -webkit-text-shadow: 0 0 4px white;
+  color: #ff7d00;
+  --o-color: #78290f;
 }
