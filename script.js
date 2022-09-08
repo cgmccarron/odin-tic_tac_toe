@@ -45,11 +45,16 @@ const player = (player_name, sign, ai, turn) => {
 
 const game = (() => {
   const spaces = document.querySelectorAll(".spaces");
+  const winning_message = document.querySelector(".winning-message");
   let x_player = player("PLayer one", "X", false, true);
   let o_player = player("PLayer two", "O", false, false);
 
   const switch_turns = () => {
     x_player.turn = !x_player.turn;
+  };
+
+  const game_winner = (sign) => {
+    return sign + " is the winner!";
   };
 
   spaces.forEach((space) => {
@@ -63,7 +68,8 @@ const game = (() => {
         space.textContent = sign;
         switch_turns();
         if (game_board.check_winner(sign)) {
-          console.log("winner");
+          winning_message.textContent = game_winner(sign);
+          winning_message.classList.remove("hidden");
         }
       }
     });

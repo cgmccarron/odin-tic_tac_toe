@@ -46,6 +46,24 @@ body {
   justify-content: center;
   font-family: "Oswald", sans-serif;
   font-size: 5rem;
-  color: #ff7d00;
-  --o-color: #78290f;
+}
+
+.winning-message {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: #15616d;
+  color: #ffecd1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hidden {
+  display: none;
 }
