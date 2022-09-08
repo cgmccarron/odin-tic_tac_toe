@@ -80,3 +80,19 @@ body {
 .hidden {
   display: none;
 }
+
+.tooltip::after {
+  content: attr(data-text);
+  position: absolute;
+  background-color: #ffecd1;
+  color: #ff7d00;
+  height: 4rem;
+  width: 6rem;
+  border-radius: 5%;
+  text-align: center;
+  display: none;
+}
+
+.tooltip:hover:after {
+  display: block;
+}

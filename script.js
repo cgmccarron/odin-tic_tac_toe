@@ -52,11 +52,17 @@ const game = (() => {
   const winning_message = document.querySelector(".winning-message");
   const outcome_message = document.querySelector(".outcome-message");
   const restart_button = document.getElementById("restart-button");
+  let turn_counter = 0;
   let x_player = player("PLayer one", "X", false, true);
   let o_player = player("PLayer two", "O", false, false);
 
   const switch_turns = () => {
     x_player.turn = !x_player.turn;
+    turn_counter += 1;
+    if (turn_counter === 9) {
+      outcome_message.textContent = "It's a draw!";
+      winning_message.classList.remove("hidden");
+    }
   };
 
   const game_winner = (sign) => {
@@ -70,6 +76,7 @@ const game = (() => {
     });
     winning_message.classList.add("hidden");
     x_player.turn = true;
+    turn_counter = 0;
   };
 
   spaces.forEach((space) => {
