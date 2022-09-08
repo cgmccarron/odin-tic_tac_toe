@@ -31,7 +31,11 @@ const game_board = (() => {
     });
   };
 
-  return { set_space, is_space_free, check_winner };
+  const clear_board = () => {
+    board = new Array(9);
+  };
+
+  return { set_space, is_space_free, check_winner, clear_board };
 })();
 
 const player = (player_name, sign, ai, turn) => {
@@ -46,6 +50,8 @@ const player = (player_name, sign, ai, turn) => {
 const game = (() => {
   const spaces = document.querySelectorAll(".spaces");
   const winning_message = document.querySelector(".winning-message");
+  const outcome_message = document.querySelector(".outcome-message");
+  const restart_button = document.getElementById("restart-button");
   let x_player = player("PLayer one", "X", false, true);
   let o_player = player("PLayer two", "O", false, false);
 
@@ -55,6 +61,15 @@ const game = (() => {
 
   const game_winner = (sign) => {
     return sign + " is the winner!";
+  };
+
+  const restart_game = () => {
+    game_board.clear_board();
+    spaces.forEach((space) => {
+      space.textContent = "";
+    });
+    winning_message.classList.add("hidden");
+    x_player.turn = true;
   };
 
   spaces.forEach((space) => {
@@ -68,10 +83,14 @@ const game = (() => {
         space.textContent = sign;
         switch_turns();
         if (game_board.check_winner(sign)) {
-          winning_message.textContent = game_winner(sign);
+          outcome_message.textContent = game_winner(sign);
           winning_message.classList.remove("hidden");
         }
       }
     });
+  });
+
+  restart_button.addEventListener("click", () => {
+    restart_game();
   });
 })();
