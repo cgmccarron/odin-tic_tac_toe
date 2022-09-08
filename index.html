@@ -33,7 +33,7 @@
       </div>
     </div>
     <div class="winning-message hidden">
-      <h1 class="outcome-message">It's a Draw!</h1>
+      <h1 class="outcome-message"></h1>
       <button id="restart-button">Restart</button>
       <a
         class="tooltip"
@@ -42,6 +42,19 @@
       >
         <img src="./icons/github-icon.png"
       /></a>
+    </div>
+    <div class="start-game">
+      <div>
+        <h1>X Player</h1>
+        <input type="text" placeholder="name" id="x-name" />
+      </div>
+      <div>
+        <h1>O Player</h1>
+        <input type="text" placeholder="name" id="o-name" />
+        <label for="ai-radio" id="ai-radio-label">AI or Two Player</label>
+        <input type="radio" id="ai-radio" />
+      </div>
+      <button id="start-button">Start Game</button>
     </div>
   </body>
 </html>

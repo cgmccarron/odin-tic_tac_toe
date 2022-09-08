@@ -85,7 +85,7 @@ body {
   content: attr(data-text);
   position: absolute;
   background-color: #ffecd1;
-  color: #ff7d00;
+  color: #78290f;
   height: 4rem;
   width: 6rem;
   border-radius: 5%;
