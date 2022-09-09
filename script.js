@@ -44,8 +44,22 @@ const player = (player_name, sign, ai, turn) => {
   };
 
   let color = sign === "X" ? "#78290f" : "#ff7d00";
-  return { player_name, sign, turn, take_turn, color };
+  return { player_name, sign, turn, take_turn, color, ai };
 };
+
+const bot = (() => {
+  const pick_spot = () => {
+    let random_number = Math.floor(Math.random() * 9);
+    if (game_board.is_space_free(random_number)) {
+      console.log(random_number);
+      return random_number;
+    } else {
+      return pick_spot();
+    }
+  };
+
+  return { pick_spot };
+})();
 
 const game = (() => {
   const spaces = document.querySelectorAll(".spaces");
@@ -54,7 +68,7 @@ const game = (() => {
   const restart_button = document.getElementById("restart-button");
   let turn_counter = 0;
   let x_player = player("PLayer one", "X", false, true);
-  let o_player = player("PLayer two", "O", false, false);
+  let o_player = player("PLayer two", "O", true, false);
 
   const switch_turns = () => {
     x_player.turn = !x_player.turn;
@@ -93,6 +107,14 @@ const game = (() => {
           outcome_message.textContent = game_winner(sign);
           winning_message.classList.remove("hidden");
         }
+      }
+      if (o_player.ai === true) {
+        let bot_move = bot.pick_spot();
+        console.log(bot_move);
+        let bot_space = document.getElementById(bot_move.toString());
+        game_board.set_space(bot_move, "O");
+        bot_space.textContent = "O";
+        switch_turns();
       }
     });
   });
