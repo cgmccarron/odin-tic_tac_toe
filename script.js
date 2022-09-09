@@ -68,7 +68,7 @@ const game = (() => {
   const restart_button = document.getElementById("restart-button");
   let turn_counter = 0;
   let x_player = player("PLayer one", "X", false, true);
-  let o_player = player("PLayer two", "O", true, false);
+  let o_player = player("PLayer two", "O", false, false);
 
   const switch_turns = () => {
     x_player.turn = !x_player.turn;
@@ -114,7 +114,12 @@ const game = (() => {
         let bot_space = document.getElementById(bot_move.toString());
         game_board.set_space(bot_move, "O");
         bot_space.textContent = "O";
+        bot_space.style.color = "#ff7d00";
         switch_turns();
+        if (game_board.check_winner(sign)) {
+          outcome_message.textContent = game_winner(sign);
+          winning_message.classList.remove("hidden");
+        }
       }
     });
   });
